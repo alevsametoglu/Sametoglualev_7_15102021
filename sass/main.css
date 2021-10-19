@@ -1,0 +1,155 @@
+header .container {
+  text-align: center;
+}
+
+header .container h1 {
+  color: #d04f4f;
+  font-family: DM Sans;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+body {
+  margin: 20px 100px;
+}
+
+ul {
+  -webkit-padding-start: 0px;
+          padding-inline-start: 0px;
+}
+
+li {
+  list-style: none;
+}
+
+.search-input {
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.search-input .form-control:focus {
+  background-color: #e7e7e7;
+  -webkit-box-shadow: unset;
+          box-shadow: unset;
+  border-color: #ced4da;
+}
+
+.search-input input {
+  border-right: none;
+  background: #e7e7e7;
+}
+
+.search-input span {
+  background-color: #e7e7e7;
+  padding: 10px;
+}
+
+.search-input span i {
+  font-size: 24px;
+}
+
+.filter-tags {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+}
+
+.filter-tags .filter-tag {
+  padding: 15px 30px;
+}
+
+.filter-tags .Ingredient {
+  background-color: #0069d9;
+}
+
+.filter-tags .appareil {
+  background-color: #218838;
+}
+
+.filter-tags .ustensiles {
+  background-color: #c82333;
+}
+
+.filter-tags .dropdown-item {
+  color: white;
+}
+
+.selected-tag div {
+  height: 50px;
+  width: 100%;
+}
+
+.card-recipes {
+  padding-top: 40px;
+}
+
+.card-recipes .cards {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+}
+
+.card-recipes .cards .card-body {
+  padding-top: 20px;
+  background: #e7e7e7;
+}
+
+.card-recipes .cards .card-body .title-recipes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 10px;
+  font-size: 18px;
+}
+
+.card-recipes .cards .card-body .title-recipes .card-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 5px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.card-recipes .cards .card-body .information-recipes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 30px;
+}
+
+.card-recipes .cards .card-body .information-recipes .list {
+  font-size: 12px;
+  font-weight: 700;
+  color: black;
+  white-space: nowrap;
+}
+
+.card-recipes .cards .card-body .information-recipes .recette {
+  font-size: 12px;
+  font-weight: 400;
+  color: black;
+}
+/*# sourceMappingURL=main.css.map */

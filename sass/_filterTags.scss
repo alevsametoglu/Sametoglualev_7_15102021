@@ -1,0 +1,20 @@
+.filter-tags {
+    display: flex;
+    gap: 20px;
+    .filter-tag {
+        padding: 15px 30px;
+    }
+    .Ingredient {
+        background-color: #0069d9;
+    }
+
+    .appareil {
+        background-color: #218838;
+    }
+    .ustensiles {
+        background-color: #c82333;
+    }
+    .dropdown-item {
+        color: white;
+    }
+}

@@ -1,0 +1,20 @@
+.search-input {
+    border-radius: 5px;
+    margin-top: 20px;
+    .form-control:focus {
+        background-color: #e7e7e7;
+        box-shadow: unset;
+        border-color: #ced4da;
+    }
+    input {
+        border-right: none;
+        background: #e7e7e7;
+    }
+    span {
+        background-color: #e7e7e7;
+        padding: 10px;
+        i {
+            font-size: 24px;
+        }
+    }
+}

@@ -1,0 +1,42 @@
+.card-recipes {
+    padding-top: 40px;
+    .cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 30px;
+        .card-body {
+            padding-top: 20px;
+            background: #e7e7e7;
+            .title-recipes {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                gap: 10px;
+                font-size: 18px;
+                .card-title {
+                    display: flex;
+                    gap: 5px;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+            .information-recipes {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                gap: 30px;
+                .list {
+                    font-size: 12px;
+                    font-weight: 700;
+                    color: black;
+                    white-space: nowrap;
+                }
+                .recette {
+                    font-size: 12px;
+                    font-weight: 400;
+                    color: black;
+                }
+            }
+        }
+    }
+}
