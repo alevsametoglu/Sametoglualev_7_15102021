@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="/sass/main.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+            integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+            crossorigin="anonymous"
+        />
+        <link rel="icon" href="./data/img/logo.png" type="image.png" />
+        <title>Les Petits Plats</title>
+    </head>
+    <body>
+        <header class="header">
+            <div class="container">
+                <a href="./index.html"><img src="./data/img/logo.png" alt="Logo les petits plats" /></a>
+                <h1 class="headerTitle">Les petits plats</h1>
+            </div>
+        </header>
+        <!-- search input -->
+        <div class="input-group search-input">
+            <input
+                type="text"
+                class="form-control"
+                placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette"
+            />
+            <div class="input-group-append">
+                <span class="input-group-text" id="basic-addon2">
+                    <i class="fas fa-search"></i>
+                </span>
+            </div>
+        </div>
+        <section class="selected-tag">
+            <div></div>
+        </section>
+
+        <!-- filter tags dropdownm -->
+        <section class="filter-tags">
+            <div class="btn-group">
+                <button
+                    type="button"
+                    class="btn btn-primary dropdown-toggle filter-tag"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                >
+                    Ingredients
+                </button>
+                <div class="dropdown-menu Ingredient">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
+            <div class="btn-group">
+                <button
+                    type="button"
+                    class="btn btn-success dropdown-toggle filter-tag"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                >
+                    Appareil
+                </button>
+                <div class="dropdown-menu appareil">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button
+                    type="button"
+                    class="btn btn-danger dropdown-toggle filter-tag"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                >
+                    Ustensiles
+                </button>
+                <div class="dropdown-menu ustensiles">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
+        </section>
+        <!-- card recipes -->
+        <section class="card-recipes">
+            <div class="card-group cards">
+                <div class="card">
+                    <img class="card-img-top" src="./data/img/bg-recipe.png" alt="Card image cap" />
+                    <div class="card-body">
+                        <div class="title-recipes">
+                            <h5 class="card-title">limonade de cocos</h5>
+                            <h5 class="card-title"><i class="far fa-clock"></i>10 min</h5>
+                        </div>
+                        <div class="information-recipes">
+                            <ul class="card-text list">
+                                <li>lait de coco:400ml</li>
+                                <li>jus de citron:2</li>
+                                <li>creme de coco:4 cuilleiers</li>
+                                <li>glacons:2</li>
+                            </ul>
+                            <p class="card-text recette">
+                                Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le
+                                jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./data/img/bg-recipe.png" alt="Card image cap" />
+                    <div class="card-body">
+                        <div class="title-recipes">
+                            <h5 class="card-title">limonade de cocos</h5>
+                            <h5 class="card-title"><i class="far fa-clock"></i>10 min</h5>
+                        </div>
+                        <div class="information-recipes">
+                            <ul class="card-text list">
+                                <li>lait de coco:400ml</li>
+                                <li>jus de citron:2</li>
+                                <li>creme de coco:4 cuilleiers</li>
+                                <li>glacons:2</li>
+                            </ul>
+                            <p class="card-text recette">
+                                Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le
+                                jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./data/img/bg-recipe.png" alt="Card image cap" />
+                    <div class="card-body">
+                        <div class="title-recipes">
+                            <h5 class="card-title">limonade de cocos</h5>
+                            <h5 class="card-title"><i class="far fa-clock"></i>10 min</h5>
+                        </div>
+                        <div class="information-recipes">
+                            <ul class="card-text list">
+                                <li>lait de coco:400ml</li>
+                                <li>jus de citron:2</li>
+                                <li>creme de coco:4 cuilleiers</li>
+                                <li>glacons:2</li>
+                            </ul>
+                            <p class="card-text recette">
+                                Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le
+                                jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./data/img/bg-recipe.png" alt="Card image cap" />
+                    <div class="card-body">
+                        <div class="title-recipes">
+                            <h5 class="card-title">limonade de cocos</h5>
+                            <h5 class="card-title"><i class="far fa-clock"></i>10 min</h5>
+                        </div>
+                        <div class="information-recipes">
+                            <ul class="card-text list">
+                                <li>lait de coco:400ml</li>
+                                <li>jus de citron:2</li>
+                                <li>creme de coco:4 cuilleiers</li>
+                                <li>glacons:2</li>
+                            </ul>
+                            <p class="card-text recette">
+                                Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le
+                                jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./data/img/bg-recipe.png" alt="Card image cap" />
+                    <div class="card-body">
+                        <div class="title-recipes">
+                            <h5 class="card-title">limonade de cocos</h5>
+                            <h5 class="card-title"><i class="far fa-clock"></i>10 min</h5>
+                        </div>
+                        <div class="information-recipes">
+                            <ul class="card-text list">
+                                <li>lait de coco:400ml</li>
+                                <li>jus de citron:2</li>
+                                <li>creme de coco:4 cuilleiers</li>
+                                <li>glacons:2</li>
+                            </ul>
+                            <p class="card-text recette">
+                                Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le
+                                jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./data/img/bg-recipe.png" alt="Card image cap" />
+                    <div class="card-body">
+                        <div class="title-recipes">
+                            <h5 class="card-title">limonade de cocos</h5>
+                            <h5 class="card-title"><i class="far fa-clock"></i>10 min</h5>
+                        </div>
+                        <div class="information-recipes">
+                            <ul class="card-text list">
+                                <li>lait de coco:400ml</li>
+                                <li>jus de citron:2</li>
+                                <li>creme de coco:4 cuilleiers</li>
+                                <li>glacons:2</li>
+                            </ul>
+                            <p class="card-text recette">
+                                Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le
+                                jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- bootstrap and javascript -->
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>
