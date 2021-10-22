@@ -60,7 +60,17 @@ li {
   padding: 15px 30px;
 }
 
-.filter-tags .Ingredient {
+.filter-tags .dropdown-item {
+  cursor: pointer;
+  color: white !important;
+}
+
+.filter-tags .dropdown-item:hover {
+  color: white !important;
+  background-color: unset;
+}
+
+.filter-tags .ingredient {
   background-color: #0069d9;
 }
 
@@ -70,10 +80,6 @@ li {
 
 .filter-tags .ustensiles {
   background-color: #c82333;
-}
-
-.filter-tags .dropdown-item {
-  color: white;
 }
 
 .selected-tag div {
