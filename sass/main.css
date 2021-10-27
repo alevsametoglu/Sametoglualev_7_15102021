@@ -54,10 +54,54 @@ li {
   display: -ms-flexbox;
   display: flex;
   gap: 20px;
+  font-family: lato;
+  font-size: 18px;
 }
 
 .filter-tags .filter-tag {
   padding: 15px 30px;
+}
+
+.filter-tags .dropdown-menu {
+  background-color: #0069d9;
+}
+
+.filter-tags .dropdown-menu .search-tag-input {
+  background-color: transparent;
+  border: none;
+  color: white;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-column: 1 / 4;
+}
+
+.filter-tags .dropdown-menu .search-tag-input::-webkit-input-placeholder {
+  color: white;
+  opacity: 0.5;
+}
+
+.filter-tags .dropdown-menu .search-tag-input:-ms-input-placeholder {
+  color: white;
+  opacity: 0.5;
+}
+
+.filter-tags .dropdown-menu .search-tag-input::-ms-input-placeholder {
+  color: white;
+  opacity: 0.5;
+}
+
+.filter-tags .dropdown-menu .search-tag-input::placeholder {
+  color: white;
+  opacity: 0.5;
+}
+
+.filter-tags .dropdown-menu.show {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 11fr;
+      grid-template-columns: 1fr 1fr 11fr;
+  max-height: 400px;
+  overflow-y: scroll;
 }
 
 .filter-tags .dropdown-item {
@@ -70,21 +114,27 @@ li {
   background-color: unset;
 }
 
-.filter-tags .ingredient {
-  background-color: #0069d9;
+#selected-tags {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 20px 0px;
 }
 
-.filter-tags .appareil {
-  background-color: #218838;
+#selected-tags .tag-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
-.filter-tags .ustensiles {
-  background-color: #c82333;
-}
-
-.selected-tag div {
-  height: 50px;
-  width: 100%;
+#selected-tags .tag-list .fa-times-circle {
+  padding-left: 20px;
 }
 
 .card-recipes {

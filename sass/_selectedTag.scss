@@ -1,6 +1,15 @@
-.selected-tag {
-    div {
-        height: 50px;
-        width: 100%;
+#selected-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 20px 0px;
+
+    .tag-list {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        .fa-times-circle {
+            padding-left: 20px;
+        }
     }
 }

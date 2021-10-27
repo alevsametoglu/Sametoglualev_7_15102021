@@ -1,25 +1,38 @@
 .filter-tags {
     display: flex;
     gap: 20px;
+    font-family: lato;
+    font-size: 18px;
     .filter-tag {
         padding: 15px 30px;
+    }
+    .dropdown-menu {
+        background-color: #0069d9;
+        .search-tag-input {
+            background-color: transparent;
+            border: none;
+            color: white;
+            grid-column: 1 / 4;
+
+            &::placeholder {
+                color: white;
+                opacity: 0.5;
+            }
+        }
+    }
+    .dropdown-menu.show {
+        display: grid;
+        grid-template-columns: 1fr 1fr 11fr;
+        max-height: 400px;
+        overflow-y: scroll;
     }
     .dropdown-item {
         cursor: pointer;
         color: white !important;
+
         &:hover {
             color: white !important;
             background-color: unset;
         }
-    }
-    .ingredient {
-        background-color: #0069d9;
-    }
-
-    .appareil {
-        background-color: #218838;
-    }
-    .ustensiles {
-        background-color: #c82333;
     }
 }
