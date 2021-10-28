@@ -11,7 +11,7 @@ header .container h1 {
 }
 
 body {
-  margin: 20px 100px;
+  margin: 20px 50px;
 }
 
 ul {
@@ -21,6 +21,10 @@ ul {
 
 li {
   list-style: none;
+}
+
+h5 {
+  font-size: 16px;
 }
 
 .search-input {
@@ -193,7 +197,7 @@ li {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  gap: 30px;
+  gap: 10px;
 }
 
 .card-recipes .cards .card-body .information-recipes .list {
