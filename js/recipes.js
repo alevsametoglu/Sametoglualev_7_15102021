@@ -747,7 +747,7 @@ const data = [
                 unit: 'grammes',
             },
             {
-                ingredient: 'Viande hachée 1% de matière grasse',
+                ingredient: 'Viande hachée',
                 quantity: 400,
                 unit: 'grammes',
             },
