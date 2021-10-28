@@ -4,9 +4,13 @@ import TagList from './components/TagList.js';
 import RecipeCard from './components/RecipesCard.js';
 
 const selectedTagsChanged = () => {
-    console.log(tagListIngredientEl.selectedTags);
-    console.log(tagListUtilEl.selectedTags);
-    console.log(tagListUtensilEl.selectedTags);
+    const filteredRecipes = api.getRecipes({
+        utils: tagListUtilEl.selectedTags,
+        ingredients: tagListIngredientEl.selectedTags,
+        utensils: tagListUtensilEl.selectedTags,
+    });
+
+    refreshRecipeList(filteredRecipes);
 };
 
 const tagListIngredientEl = new TagList('primary', selectedTagsChanged);
@@ -70,14 +74,20 @@ const initFilterButtons = () => {
     filterSection.appendChild(dropdownUtensils.el);
 };
 
-const initRecipeList = () => {
+const refreshRecipeList = (recipes) => {
     const recipeListSection = document.querySelector('#recipes-list');
-    const recipes = api.getRecipes();
-    // console.log(recipes);
+    recipeListSection.innerHTML = ``;
     recipes.forEach((recipe) => {
         const recipeEl = new RecipeCard(recipe.name, recipe.time, recipe.ingredients, recipe.description);
         recipeListSection.appendChild(recipeEl.el);
     });
+    const alertRecipe = document.querySelector('.card-alert');
+    recipes.length === 0 ? (alertRecipe.style.display = 'block') : (alertRecipe.style.display = 'none');
+};
+
+const initRecipeList = () => {
+    const recipes = api.getRecipes();
+    refreshRecipeList(recipes);
 };
 
 initFilterButtons();
