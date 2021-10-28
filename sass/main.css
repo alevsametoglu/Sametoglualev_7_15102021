@@ -208,4 +208,8 @@ li {
   font-weight: 400;
   color: black;
 }
+
+.card-alert {
+  display: none;
+}
 /*# sourceMappingURL=main.css.map */
