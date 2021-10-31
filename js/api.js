@@ -11,11 +11,11 @@ class API {
         if (!searchKey) return uniqUtensils;
         else {
             searchKey = searchKey.toLowerCase();
-            const filteredUtensils = uniqUtensils.filter((utensils) => {
-                const isIncude = utensil.toLowerCase().includes(searchKey);
-                return isIncude;
+            const filteredUtensils = uniqUtensils.filter((utensil) => {
+                const isInclude = utensil.toLowerCase().includes(searchKey);
+                return isInclude;
             });
-            return filteredUtils;
+            return filteredUtensils;
         }
     }
 
@@ -60,14 +60,19 @@ class API {
         if (!filterParams) return recipes;
         const { utils, ingredients, utensils, searchKey } = filterParams;
 
-        if (!utils && !ingredients && !utensils && !searchKey) return recipes;
+        console.log(searchKey);
+
+        if (searchKey) {
+            //TODO: filter recipes by search key
+            return recipes;
+        }
+
+        if (!utils && !ingredients && !utensils) return recipes;
         if (utils.length === 0 && ingredients.length === 0 && utensils.length === 0) return recipes;
 
         const filteredRecipes = [];
 
         recipes.forEach((recipe) => {
-            //TODO: filter recipe with filter params and push to filtered recipes array
-
             const isIngredientsExist = ingredients.every((ingredient) =>
                 recipe.ingredients.some((x) => x.ingredient === ingredient),
             );
