@@ -2,8 +2,9 @@ import api from './api.js';
 import DropdownButton from './components/DropdownButton.js';
 import TagList from './components/TagList.js';
 import RecipeCard from './components/RecipesCard.js';
+import SearchInput from './components/searchInput.js';
 
-const selectedTagsChanged = () => {
+const loadRecipesBySelectedTags = () => {
     const filteredRecipes = api.getRecipes({
         utils: tagListUtilEl.selectedTags,
         ingredients: tagListIngredientEl.selectedTags,
@@ -13,9 +14,9 @@ const selectedTagsChanged = () => {
     refreshRecipeList(filteredRecipes);
 };
 
-const tagListIngredientEl = new TagList('primary', selectedTagsChanged);
-const tagListUtilEl = new TagList('success', selectedTagsChanged);
-const tagListUtensilEl = new TagList('danger', selectedTagsChanged);
+const tagListIngredientEl = new TagList('primary', loadRecipesBySelectedTags);
+const tagListUtilEl = new TagList('success', loadRecipesBySelectedTags);
+const tagListUtensilEl = new TagList('danger', loadRecipesBySelectedTags);
 
 const initTagList = () => {
     const tagSectionEl = document.getElementById('selected-tags');
@@ -90,6 +91,22 @@ const initRecipeList = () => {
     refreshRecipeList(recipes);
 };
 
+const initSearchInput = () => {
+    const searchSection = document.querySelector('section#search-input');
+    const searchInputEl = new SearchInput(
+        'Rechercher un ingrédient, appareil, ustensiles ou une recette',
+        (inputValue) => {
+            if (!!inputValue && inputValue.length > 3) {
+                const filteredRecipes = api.getRecipes({ searchKey: inputValue });
+                refreshRecipeList(filteredRecipes);
+            } else {
+                loadRecipesBySelectedTags();
+            }
+        },
+    );
+    searchSection.appendChild(searchInputEl.el);
+};
+initSearchInput();
 initFilterButtons();
 initTagList();
 initRecipeList();
