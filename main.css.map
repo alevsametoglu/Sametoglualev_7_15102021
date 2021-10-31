@@ -6,7 +6,7 @@
         "sass/_hearder.scss",
         "sass/_reset.scss",
         "sass/_searchInput.scss",
-        "sass/_filterTags.scss",
+        "sass/_dropdown.scss",
         "sass/_selectedTag.scss",
         "sass/_cardRecipes.scss",
         "sass/_alert.scss"
