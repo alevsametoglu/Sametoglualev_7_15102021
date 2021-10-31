@@ -15,7 +15,7 @@ export default class DropdownButton {
         `;
         const dropdownMenuEl = document.createElement('div');
         dropdownMenuEl.classList.add('dropdown-menu');
-        // dropdownMenuEl.style.background = `red !important`;
+        dropdownMenuEl.style.backgroundColor = `red !important`;
 
         const searchTagInput = document.createElement('input');
         searchTagInput.classList.add('form-control');
