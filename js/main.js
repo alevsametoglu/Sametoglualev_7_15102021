@@ -2,7 +2,7 @@ import api from './api.js';
 import DropdownButton from './components/DropdownButton.js';
 import TagList from './components/TagList.js';
 import RecipeCard from './components/RecipesCard.js';
-import SearchInput from './components/searchInput.js';
+import SearchInput from './components/SearchInput.js';
 
 let searchKey = '';
 
