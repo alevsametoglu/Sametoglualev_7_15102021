@@ -1,5 +1,15 @@
 import recipes from './recipes.js';
 // filter recipes by for (boucle Native)
+function searchText(text, searchKey) {
+    let count = 0;
+    for (let i = 0; i < text.length; i++) {
+        for (let j = 0; j < searchKey.length; j++) {
+            if (searchKey[j] !== text[i + j]) break;
+            if (j === searchKey.length - 1) count++;
+        }
+    }
+    return count;
+}
 
 const searchOnRecipes = (searchingList, searchKey) => {
     // console.log(searchKey, searchingList);
@@ -14,10 +24,11 @@ const searchOnRecipes = (searchingList, searchKey) => {
             text = text + ' ' + ingredient.ingredient;
         }
 
-        if (text.toLowerCase().search(searchKeyLower) !== -1) {
+        if (searchText(text, searchKeyLower) > 0) {
             filteredRecipes.push(recipe);
         }
     }
+
     // console.log(filteredRecipes);
     return filteredRecipes;
 };
