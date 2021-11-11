@@ -1,4 +1,27 @@
 import recipes from './recipes.js';
+// filter recipes by for (boucle Native)
+
+const searchOnRecipes = (searchingList, searchKey) => {
+    // console.log(searchKey, searchingList);
+    const filteredRecipes = [];
+    const searchKeyLower = searchKey.toLowerCase();
+    for (let i = 0; i < searchingList.length; i++) {
+        const recipe = searchingList[i];
+        let text = recipe.name + ' ' + recipe.description;
+
+        for (let y = 0; y < recipe.ingredients.length; y++) {
+            const ingredient = recipe.ingredients[y];
+            text = text + ' ' + ingredient.ingredient;
+        }
+
+        if (text.toLowerCase().includes(searchKeyLower)) {
+            filteredRecipes.push(recipe);
+        }
+    }
+
+    // console.log(filteredRecipes);
+    return filteredRecipes;
+};
 
 class API {
     static getUtensils(searchKey) {
@@ -60,19 +83,14 @@ class API {
         if (!filterParams) return recipes;
         const { utils, ingredients, utensils, searchKey } = filterParams;
 
-        console.log(searchKey);
+        const _recipes = searchKey ? searchOnRecipes(recipes, searchKey) : recipes;
 
-        if (searchKey) {
-            //TODO: filter recipes by search key
-            return recipes;
-        }
-
-        if (!utils && !ingredients && !utensils) return recipes;
-        if (utils.length === 0 && ingredients.length === 0 && utensils.length === 0) return recipes;
+        if (!utils && !ingredients && !utensils) return _recipes;
+        if (utils.length === 0 && ingredients.length === 0 && utensils.length === 0) return _recipes;
 
         const filteredRecipes = [];
 
-        recipes.forEach((recipe) => {
+        _recipes.forEach((recipe) => {
             const isIngredientsExist = ingredients.every((ingredient) =>
                 recipe.ingredients.some((x) => x.ingredient === ingredient),
             );

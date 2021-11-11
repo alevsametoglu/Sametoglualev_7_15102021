@@ -4,19 +4,29 @@ import TagList from './components/TagList.js';
 import RecipeCard from './components/RecipesCard.js';
 import SearchInput from './components/SearchInput.js';
 
-const loadRecipesBySelectedTags = () => {
-    const filteredRecipes = api.getRecipes({
+let searchKey = '';
+
+const refreshRecipeList = () => {
+    const recipes = api.getRecipes({
         utils: tagListUtilEl.selectedTags,
         ingredients: tagListIngredientEl.selectedTags,
         utensils: tagListUtensilEl.selectedTags,
+        searchKey,
     });
 
-    refreshRecipeList(filteredRecipes);
+    const recipeListSection = document.querySelector('#recipes-list');
+    recipeListSection.innerHTML = ``;
+    recipes.forEach((recipe) => {
+        const recipeEl = new RecipeCard(recipe.name, recipe.time, recipe.ingredients, recipe.description);
+        recipeListSection.appendChild(recipeEl.el);
+    });
+    const alertRecipe = document.querySelector('.card-alert');
+    recipes.length === 0 ? (alertRecipe.style.display = 'block') : (alertRecipe.style.display = 'none');
 };
 
-const tagListIngredientEl = new TagList('primary', loadRecipesBySelectedTags);
-const tagListUtilEl = new TagList('success', loadRecipesBySelectedTags);
-const tagListUtensilEl = new TagList('danger', loadRecipesBySelectedTags);
+const tagListIngredientEl = new TagList('primary', refreshRecipeList);
+const tagListUtilEl = new TagList('success', refreshRecipeList);
+const tagListUtensilEl = new TagList('danger', refreshRecipeList);
 
 const initTagList = () => {
     const tagSectionEl = document.getElementById('selected-tags');
@@ -75,17 +85,6 @@ const initFilterButtons = () => {
     filterSection.appendChild(dropdownUtensils.el);
 };
 
-const refreshRecipeList = (recipes) => {
-    const recipeListSection = document.querySelector('#recipes-list');
-    recipeListSection.innerHTML = ``;
-    recipes.forEach((recipe) => {
-        const recipeEl = new RecipeCard(recipe.name, recipe.time, recipe.ingredients, recipe.description);
-        recipeListSection.appendChild(recipeEl.el);
-    });
-    const alertRecipe = document.querySelector('.card-alert');
-    recipes.length === 0 ? (alertRecipe.style.display = 'block') : (alertRecipe.style.display = 'none');
-};
-
 const initRecipeList = () => {
     const recipes = api.getRecipes();
     refreshRecipeList(recipes);
@@ -96,12 +95,10 @@ const initSearchInput = () => {
     const searchInputEl = new SearchInput(
         'Rechercher un ingrédient, appareil, ustensiles ou une recette',
         (inputValue) => {
-            if (!!inputValue && inputValue.length > 3) {
-                const filteredRecipes = api.getRecipes({ searchKey: inputValue });
-                refreshRecipeList(filteredRecipes);
-            } else {
-                loadRecipesBySelectedTags();
-            }
+            if (!!inputValue && inputValue.length > 3) searchKey = inputValue;
+            else searchKey = '';
+
+            refreshRecipeList();
         },
     );
     searchSection.appendChild(searchInputEl.el);
