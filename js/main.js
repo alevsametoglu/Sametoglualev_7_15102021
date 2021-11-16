@@ -72,7 +72,7 @@ const initFilterButtons = () => {
     const utensils = api.getUtensils();
     const itemClickedUtensil = (item) => tagListUtensilEl.addTag(item);
     const filterDropdownUtensilsItems = (inputValue) => {
-        const utensils = api.getUtils(inputValue);
+        const utensils = api.getUtensils(inputValue);
         dropdownUtensils.updateOptionList(utensils);
     };
     const dropdownUtensils = new DropdownButton(

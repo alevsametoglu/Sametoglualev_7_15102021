@@ -1,9 +1,11 @@
 import recipes from './recipes.js';
 // filter recipes by for (boucle Native)
+const normalize = (text) => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
 const searchOnRecipes = (searchingList, searchKey) => {
     // console.log(searchKey, searchingList);
     const filteredRecipes = [];
+    searchKey = normalize(searchKey);
     const searchKeyLower = searchKey.toLowerCase();
     for (let i = 0; i < searchingList.length; i++) {
         const recipe = searchingList[i];
@@ -14,7 +16,7 @@ const searchOnRecipes = (searchingList, searchKey) => {
             text = text + ' ' + ingredient.ingredient;
         }
 
-        if (text.toLowerCase().includes(searchKeyLower)) {
+        if (normalize(text).toLowerCase().includes(searchKeyLower)) {
             filteredRecipes.push(recipe);
         }
     }
@@ -26,16 +28,16 @@ const searchOnRecipes = (searchingList, searchKey) => {
 class API {
     static getUtensils(searchKey) {
         const uniqUtensils = [];
-
         const utensils = recipes.map((recipe) => recipe.ustensils).flat();
         utensils.forEach((utensil) => {
             if (!uniqUtensils.includes(utensil)) uniqUtensils.push(utensil);
         });
         if (!searchKey) return uniqUtensils;
         else {
+            searchKey = normalize(searchKey);
             searchKey = searchKey.toLowerCase();
             const filteredUtensils = uniqUtensils.filter((utensil) => {
-                const isInclude = utensil.toLowerCase().includes(searchKey);
+                const isInclude = normalize(utensil).toLowerCase().includes(searchKey);
                 return isInclude;
             });
             return filteredUtensils;
@@ -52,9 +54,10 @@ class API {
 
         if (!searchKey) return uniqIngredients;
         else {
+            searchKey = normalize(searchKey);
             searchKey = searchKey.toLowerCase();
             const filteredIngredients = uniqIngredients.filter((ingredient) => {
-                const isInclude = ingredient.toLowerCase().includes(searchKey);
+                const isInclude = normalize(ingredient).toLowerCase().includes(searchKey);
                 return isInclude;
             });
             return filteredIngredients;
@@ -69,9 +72,10 @@ class API {
         });
         if (!searchKey) return uniqUtils;
         else {
+            searchKey = normalize(searchKey);
             searchKey = searchKey.toLowerCase();
             const filteredUtils = uniqUtils.filter((util) => {
-                const isInclude = util.toLowerCase().includes(searchKey);
+                const isInclude = normalize(util).toLowerCase().includes(searchKey);
                 return isInclude;
             });
             return filteredUtils;
