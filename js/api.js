@@ -1,6 +1,10 @@
 import recipes from './recipes.js';
 // filter recipes by for (boucle Native)
 const normalize = (text) => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+const isSearchWordExist = (text, searchKey) => {
+    console.log(text);
+    return text !== undefined ? text.split(' ').includes(searchKey) : false;
+};
 
 const searchOnRecipes = (searchingList, searchKey) => {
     // console.log(searchKey, searchingList);
@@ -9,19 +13,22 @@ const searchOnRecipes = (searchingList, searchKey) => {
     const searchKeyLower = searchKey.toLowerCase();
     for (let i = 0; i < searchingList.length; i++) {
         const recipe = searchingList[i];
-        let text = recipe.name + ' ' + recipe.description;
-
-        for (let y = 0; y < recipe.ingredients.length; y++) {
-            const ingredient = recipe.ingredients[y];
-            text = text + ' ' + ingredient.ingredient;
-        }
-
-        if (normalize(text).toLowerCase().includes(searchKeyLower)) {
+        if (isSearchWordExist(recipe.name, searchKey)) {
             filteredRecipes.push(recipe);
+        } else if (isSearchWordExist(recipe.description, searchKey)) {
+            filteredRecipes.push(recipe);
+        } else {
+            for (let y = 0; y < recipe.ingredients.length; y++) {
+                const ingredient = recipe.ingredients[y];
+                if (isSearchWordExist(ingredient.ingredient, searchKey)) {
+                    filteredRecipes.push(recipe);
+                    break;
+                }
+            }
         }
     }
 
-    // console.log(filteredRecipes);
+    console.log(filteredRecipes);
     return filteredRecipes;
 };
 
