@@ -1,33 +1,23 @@
 import recipes from './recipes.js';
 // filter recipes by for (boucle Native)
 const normalize = (text) => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-const isSearchWordExist = (text, searchKey) => {
-    console.log(text);
-    return text !== undefined ? text.split(' ').includes(searchKey) : false;
-};
+const isSearchKeyExist = (text, searchKey) => normalize(text).toLowerCase().includes(searchKey);
 
 const searchOnRecipes = (searchingList, searchKey) => {
-    const filteredRecipes = [];
-    searchKey = normalize(searchKey);
-    const searchKeyLower = searchKey.toLowerCase();
-    for (let i = 0; i < searchingList.length; i++) {
-        const recipe = searchingList[i];
-        if (isSearchWordExist(recipe.name, searchKey)) {
-            filteredRecipes.push(recipe);
-        } else if (isSearchWordExist(recipe.description, searchKey)) {
-            filteredRecipes.push(recipe);
+    searchKey = searchKey.toLowerCase();
+    const filteredRecipes = searchingList.filter((recipe) => {
+        if (isSearchKeyExist(recipe.name, searchKey)) {
+            return true;
+        } else if (isSearchKeyExist(recipe.description, searchKey)) {
+            return true;
         } else {
-            for (let y = 0; y < recipe.ingredients.length; y++) {
-                const ingredient = recipe.ingredients[y];
-                if (isSearchWordExist(ingredient.ingredient, searchKey)) {
-                    filteredRecipes.push(recipe);
-                    break;
+            for (const ingredientInfo of recipe.ingredients) {
+                if (isSearchKeyExist(ingredientInfo.ingredient, searchKey)) {
+                    return true;
                 }
             }
         }
-    }
-
-    console.log(filteredRecipes);
+    });
     return filteredRecipes;
 };
 
