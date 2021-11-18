@@ -7,7 +7,6 @@ const isSearchWordExist = (text, searchKey) => {
 };
 
 const searchOnRecipes = (searchingList, searchKey) => {
-    // console.log(searchKey, searchingList);
     const filteredRecipes = [];
     searchKey = normalize(searchKey);
     const searchKeyLower = searchKey.toLowerCase();
@@ -32,10 +31,11 @@ const searchOnRecipes = (searchingList, searchKey) => {
     return filteredRecipes;
 };
 
+let _filteredRecipes = recipes;
 class API {
     static getUtensils(searchKey) {
         const uniqUtensils = [];
-        const utensils = recipes.map((recipe) => recipe.ustensils).flat();
+        const utensils = _filteredRecipes.map((recipe) => recipe.ustensils).flat();
         utensils.forEach((utensil) => {
             if (!uniqUtensils.includes(utensil)) uniqUtensils.push(utensil);
         });
@@ -53,7 +53,7 @@ class API {
 
     static getIngredients(searchKey) {
         const uniqIngredients = [];
-        const ingredients = recipes.map((recipe) => recipe.ingredients).flat();
+        const ingredients = _filteredRecipes.map((recipe) => recipe.ingredients).flat();
 
         ingredients.forEach((item) => {
             if (!uniqIngredients.includes(item.ingredient)) uniqIngredients.push(item.ingredient);
@@ -73,7 +73,7 @@ class API {
 
     static getUtils = (searchKey) => {
         const uniqUtils = [];
-        const utils = recipes.map((recipe) => recipe.appliance);
+        const utils = _filteredRecipes.map((recipe) => recipe.appliance);
         utils.forEach((util) => {
             if (!uniqUtils.includes(util)) uniqUtils.push(util);
         });
@@ -91,15 +91,21 @@ class API {
 
     static getRecipes = (filterParams) => {
         console.log(filterParams);
-        if (!filterParams) return recipes;
+        if (!filterParams) {
+            _filteredRecipes = recipes;
+            return _filteredRecipes;
+        }
         const { utils, ingredients, utensils, searchKey } = filterParams;
 
         const _recipes = searchKey ? searchOnRecipes(recipes, searchKey) : recipes;
 
-        if (!utils && !ingredients && !utensils) return _recipes;
-        if (utils.length === 0 && ingredients.length === 0 && utensils.length === 0) return _recipes;
+        if (!utils && !ingredients && !utensils)
+            if (utils.length === 0 && ingredients.length === 0 && utensils.length === 0) {
+                _filteredRecipes = _recipes;
+                return _filteredRecipes;
+            }
 
-        const filteredRecipes = [];
+        _filteredRecipes = [];
 
         _recipes.forEach((recipe) => {
             const isIngredientsExist = ingredients.every((ingredient) =>
@@ -109,16 +115,11 @@ class API {
 
             const isUtensilsExist = utensils.every((utensil) => recipe.ustensils.includes(utensil));
 
-            // filtered tag by tag
-            // if (isIngredientsExist) filteredRecipes.push(recipe);
-            // if (isUtilsExist) filteredRecipes.push(recipe);
-            // if (isUtensilsExist) filteredRecipes.push(recipe);
-
             // filtered
-            if (isUtilsExist && isIngredientsExist && isUtensilsExist) filteredRecipes.push(recipe);
+            if (isUtilsExist && isIngredientsExist && isUtensilsExist) _filteredRecipes.push(recipe);
         });
 
-        return filteredRecipes;
+        return _filteredRecipes;
     };
 }
 

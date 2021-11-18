@@ -14,6 +14,10 @@ const refreshRecipeList = () => {
         searchKey,
     });
 
+    dropdownUtils.updateOptionList(api.getUtils());
+    dropdownButtonIngredients.updateOptionList(api.getIngredients());
+    dropdownUtensils.updateOptionList(api.getUtensils());
+
     const recipeListSection = document.querySelector('#recipes-list');
     recipeListSection.innerHTML = ``;
     recipes.forEach((recipe) => {
@@ -28,6 +32,37 @@ const tagListIngredientEl = new TagList('primary', refreshRecipeList);
 const tagListUtilEl = new TagList('success', refreshRecipeList);
 const tagListUtensilEl = new TagList('danger', refreshRecipeList);
 
+const dropdownUtils = new DropdownButton(
+    'Appareil',
+    'success',
+    api.getUtils(),
+    (item) => tagListUtilEl.addTag(item),
+    (inputValue) => {
+        const utils = api.getUtils(inputValue);
+        dropdownUtils.updateOptionList(utils);
+    },
+);
+const dropdownUtensils = new DropdownButton(
+    'Ustensiles',
+    'danger',
+    api.getUtensils(),
+    (item) => tagListUtensilEl.addTag(item),
+    (inputValue) => {
+        const utensils = api.getUtensils(inputValue);
+        dropdownUtensils.updateOptionList(utensils);
+    },
+);
+const dropdownButtonIngredients = new DropdownButton(
+    'Ingredients',
+    'primary',
+    api.getIngredients(),
+    (item) => tagListIngredientEl.addTag(item),
+    (inputValue) => {
+        const ingredients = api.getIngredients(inputValue);
+        dropdownButtonIngredients.updateOptionList(ingredients);
+    },
+);
+
 const initTagList = () => {
     const tagSectionEl = document.getElementById('selected-tags');
     tagSectionEl.appendChild(tagListIngredientEl.el);
@@ -38,50 +73,8 @@ const initTagList = () => {
 // create filter buttons function
 const initFilterButtons = () => {
     const filterSection = document.querySelector('section.filter-tags');
-
-    // create ingredients filter button
-    const ingredients = api.getIngredients();
-    const itemClickedIngredient = (item) => tagListIngredientEl.addTag(item);
-
-    const filterDropdownIngredientItems = (inputValue) => {
-        const ingredients = api.getIngredients(inputValue);
-        dropdownButtonIngredients.updateOptionList(ingredients);
-    };
-    const dropdownButtonIngredients = new DropdownButton(
-        'Ingredients',
-        'primary',
-        ingredients,
-        itemClickedIngredient,
-        filterDropdownIngredientItems,
-    );
     filterSection.appendChild(dropdownButtonIngredients.el);
-
-    // create utils filter button
-    const utils = api.getUtils();
-    const itemClickedUtils = (item) => tagListUtilEl.addTag(item);
-
-    const filterDropdownUtilsItems = (inputValue) => {
-        const utils = api.getUtils(inputValue);
-        dropdownUtils.updateOptionList(utils);
-    };
-
-    const dropdownUtils = new DropdownButton('Appareil', 'success', utils, itemClickedUtils, filterDropdownUtilsItems);
     filterSection.appendChild(dropdownUtils.el);
-
-    // create utensils filter button
-    const utensils = api.getUtensils();
-    const itemClickedUtensil = (item) => tagListUtensilEl.addTag(item);
-    const filterDropdownUtensilsItems = (inputValue) => {
-        const utensils = api.getUtensils(inputValue);
-        dropdownUtensils.updateOptionList(utensils);
-    };
-    const dropdownUtensils = new DropdownButton(
-        'Ustensiles',
-        'danger',
-        utensils,
-        itemClickedUtensil,
-        filterDropdownUtensilsItems,
-    );
     filterSection.appendChild(dropdownUtensils.el);
 };
 
