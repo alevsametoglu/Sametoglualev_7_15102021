@@ -1,7 +1,7 @@
 import recipes from './recipes.js';
 // filter recipes by for (boucle Native)
 const normalize = (text) => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-const isSearchWordExist = (text, searchKey) => text.toLowerCase().includes(searchKey);
+const isSearchWordExist = (text, searchKey) => normalize(text).toLowerCase().includes(searchKey);
 
 const searchOnRecipes = (searchingList, searchKey) => {
     const filteredRecipes = [];
