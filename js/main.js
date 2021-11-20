@@ -88,6 +88,7 @@ const initSearchInput = () => {
     const searchInputEl = new SearchInput(
         'Rechercher un ingrédient, appareil, ustensiles ou une recette',
         (inputValue) => {
+            inputValue = inputValue.trim();
             if (!!inputValue && inputValue.length >= 3) searchKey = inputValue;
             else searchKey = '';
 
