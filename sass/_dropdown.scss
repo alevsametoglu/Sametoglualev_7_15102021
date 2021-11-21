@@ -7,7 +7,7 @@
         padding: 15px 30px;
     }
     .dropdown-menu {
-        background-color: #0069d9;
+        padding: 0px;
         .search-tag-input {
             background-color: transparent;
             border: none;
@@ -20,11 +20,9 @@
             }
         }
     }
-    .dropdown-menu.show {
+    .container-dropdown {
         display: grid;
         grid-template-columns: 1fr 1fr 11fr;
-        max-height: 400px;
-        overflow-y: scroll;
     }
     .dropdown-item {
         cursor: pointer;

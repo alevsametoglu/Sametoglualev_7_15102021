@@ -67,7 +67,7 @@ h5 {
 }
 
 .filter-tags .dropdown-menu {
-  background-color: #0069d9;
+  padding: 0px;
 }
 
 .filter-tags .dropdown-menu .search-tag-input {
@@ -99,13 +99,11 @@ h5 {
   opacity: 0.5;
 }
 
-.filter-tags .dropdown-menu.show {
+.filter-tags .container-dropdown {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr 11fr;
       grid-template-columns: 1fr 1fr 11fr;
-  max-height: 400px;
-  overflow-y: scroll;
 }
 
 .filter-tags .dropdown-item {
